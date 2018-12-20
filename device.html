@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SimpleXWebsite | Device Info</title>
+        <body class="deviceBody">
+            <link rel="stylesheet" type="text/css" href="main-design.css">
+            <script type="text/javascript" src="main-functions.js"></script>
+            <script type="text/javascript" src="ua-parser.min.js"></script>
+            <ul class="nav-bar">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="device.html">Device Info</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+
+            <center>
+                <div class="device-infobox">
+                    <h2 class="deviceTitleBox">Device Information</h2>
+                    <p class="deviceType" id="device"></p>
+                    <p class="kernel" id="kType"></p>
+                    <p class="error" id="errorType"></p>
+                    <p class="engine" id="engineType"></p>
+                    <p class="platform" id="platformName"></p>
+                    <p class="browserName" id="bName"></p>
+                    <p class="cookiesEnabled" id="cEnabled"></p>
+                    <p class="codeName" id="cName"></p>
+
+                    <script>
+                        var parser = new UAParser();
+                        var result = parser.getResult();
+                        if(/iPhone/i.test(navigator.userAgent)){
+                            document.getElementById("device").innerHTML = "Device: iPhone";
+                            document.getElementById("kType").innerHTML = "iOS Version: " + result.os.version;
+                            document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                            document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                        } else if(/iPad/i.test(navigator.userAgent)){
+                            document.getElementById("device").innerHTML = "Device: iPad";
+                            document.getElementById("kType").innerHTML = "iOS Version: " + result.os.version;
+                            document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                            document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                        } else if(/Android/i.test(navigator.userAgent)){
+                            document.getElementById("device").innerHTML = "Device: Android";
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("kType").innerHTML = "Android Version: " + result.os.version;
+                            document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                            document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                        } else if(/Linux/i.test(navigator.userAgent)){
+                            document.getElementById("device").innerHTML = "Device: Linux";
+                            document.getElementById("platformName").innerHTML = "System: " + navigator.platform;
+                            // document.getElementById("kType").innerHTML = "Linux Version: " + result.os.version;
+                            if(result.os.version == null){
+                                document.getElementById("kType").innerHTML = "Linux Version: Error (Undefined)";
+                            } else {
+                                document.getElementById("kType").innerHTML = "Linux Version: " + result.os.version;
+                            }
+                            document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                            document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                        } else {
+                            document.getElementById("device").innerHTML = "Device: Unknown"
+                            document.getElementById("platformName").innerHTML = "System: " + navigator.platform;
+                            document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                            document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                            document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                        }
+
+                    </script>
+                </div>
+            </center>
+        </body>
+    </head>
+</html>

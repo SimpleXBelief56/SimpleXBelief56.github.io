@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <body class="SimpleXWebkit-Body">
+            <link rel="stylesheet" type="text/css" href="main-design.css">
+            <script type="text/javascript" src="ua-parser.min.js"></script>
+            <script src="iziToast.min.js" type="text/javascript"></script>
+            <script>
+                var Terms = confirm("By continuing, you agree that SimpleXTeam does not take responsibility to what ever happens to your device.");
+
+                if(Terms == false){
+                    window.open("main.html");
+                }
+            </script>
+            <center>
+                <h1 class="SimpleXWebkit-Title">SimpleXWebkit</h1>
+                <h3 class="MobilePhone">iPhone 7/7+</h3>
+                <h3 class="SimpleXWebkit-SubTitle">iOS 11.4 - 11.4.1 Webkit Exploit</h3>
+                <!-- <button class="ExploitButtonSpawnExploit" onclick="SpawnWebkitExploit(0)">Exploit Device</button> -->
+                <input type="button" value="Exploit Device" onclick="SpawnWebkitExploit(0)">
+                <p class="Status" id="S"></p>
+                <progress class="WebkitProgress" value="0" id="WP" max="100"></progress>
+
+                <script>
+                    function SpawnWebkitExploit(AllocValue){
+                        // Spawn that Webkit Exploit
+                        var AllocID = document.getElementById("WP");
+                        AllocID.value = AllocValue;
+                        AllocValue++;
+                        var startExploitation = setTimeout("SpawnWebkitExploit("+AllocValue+")", 200);
+                        var parser = new UAParser();
+                        var iOSKernelInfo = parser.getResult();
+                        var iOSVersion = iOSKernelInfo.os.version;
+                        var iOS = iOSVersion;
+                        var iOSVersionString = iOS.toString();                     
+
+                        
+
+                        if(AllocValue == 1){
+                            document.getElementById("S").innerHTML = "Checking iOS Version";
+                            if(iOSVersionString ==! "11.4.1" || iOSVersionString ==! "11.4" || iOSVersion == null ){
+                                AllocID.value = 1;
+                                document.getElementById("S").innerHTML = "SpawnWebkitExploit(): Failed! -> " + iOSVersion
+                                console.log("Exploit Failed! -> ERRROR(Version > 11.4.1)")
+                                console.log(iOSVersion);
+                                alert(iOSVersionString);
+                                clearTimeout(startExploitation);
+                                iziToast.show({
+                                    title: "SpawnWebkitExploit():",
+                                    message: "Exploit Failed (iOS 11.4 - 11.4.1)",
+                                    backgroundColor: "gray",
+                                    animateInside: "true",
+                                    titleSize: "30",
+                                    // titleLineHeight: "20",
+                                    messageSize: "30",
+                                    // messageLineHeight: "20",
+                                    position: "topCenter",
+                                    progressBarColor: "black"
+                                });                        
+                            } else {
+                                console.log("Exploit Passed!")
+                                console.log("Webkit Exploit: 0x7f34fe2")
+                                console.log("Exploiting Device!")
+                                console.log("Device Exploited!")
+                            }
+
+                            if(/iPad/i.test(navigator.userAgent)){
+                                AllocID.value = 1;
+                                document.getElementById("S").innerHTML = "SpawnWebkitExploit.Stop(): iPad is not supported!";
+                                console.log("iPad Detected, Exploit Stopped");
+                                clearTimeout(startExploitation);
+                            }
+                        }
+
+
+                        if(AllocValue == 5){
+                            document.getElementById("S").innerHTML = "Importing Exploit";
+                        }
+
+                        if(AllocValue == 10){
+                            document.getElementById().innerHTML = "Checking Cache";
+                        }
+
+                        if(AllocValue == 20){
+                            document.getElementById("S").innerHTML = "Starting Exploit";
+                        }
+
+                        if(AllocValue == 30){
+                            document.getElementById("S").innerHTML = "SpawningWebkitExploit()";
+                        }
+
+                        if(AllocValue == 70){
+                            document.getElementById("S").innerHTML = "Running Exploit";
+                        }
+
+                        if(AllocValue == 100){
+                            AllocID.value = 100;
+                            clearTimeout(startExploitation);
+                            document.getElementById("S").innerHTML = "Finished!";
+                            window.open("index.html")
+                        } 
+                    }
+                </script>
+            </center>
+            
+
+        </body>
+    </head>
+</html>
