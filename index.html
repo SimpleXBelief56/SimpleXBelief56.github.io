@@ -1,65 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SimpleXLoader</title>
-        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
-        <body class="loadingBody">
-            <link rel="stylesheet" type="text/css" href="main-design.css">            
-            <div class="loadingWindow">
-                <h2 class="loadingTitle">SimpleXLoader</h2>
-                <p class="loadingProgressInfo" id="LPI"></p>
-                <progress class="ProgressBar" value="0" id="pr" max="100"></progress>
-                <script>
-                    function progressBarFunction(amountLoad){
-                        var ProgressBarElement = document.getElementById("pr");
-                        ProgressBarElement.value = amountLoad;
-                        amountLoad++;
-                        var start = setTimeout("progressBarFunction("+amountLoad+")",100);
-
-                        if(amountLoad == 1){
-                            document.getElementById("LPI").innerHTML = "Importing Files";
-                        }
-
-                        if(amountLoad == 25){
-                            document.getElementById("LPI").innerHTML = "Loading Exploits";
-                        }
-
-                        if(amountLoad == 35){
-                            document.getElementById("LPI").innerHTML = "Getting Device Info";
-                        }
-
-                        if(amountLoad == 55){
-                            if(/iPhone/i.test(navigator.userAgent)){
-                                document.getElementById("LPI").innerHTML = "iPhone Detected: Loading Prefernces";
-                            } else if(/iPad/i.test(navigator.userAgent)){
-                                document.getElementById("LPI").innerHTML = "iPad Detected: Loading Preferences";
-                            } else if(/Android/i/test(navigator.userAgent)){
-                                document.getElementById("LPI").innerHTML = "Android Detected: Loading Preferences";
-                            } else if(/Linux/i.test(navigator.userAgent)){
-                                document.getElementById("LPI").innerHTML = "Linux Detected: Loading Preferences";
-                            } else {
-                                document.getElementById("LPI").innerHTML = "Unknown Device Detected: Loading default Prefernces";
-                            }
-                        }
-
-                        if(amountLoad == 75){
-                            document.getElementById("LPI").innerHTML = "Optimizing Server";
-                        }
-
-                        if(amountLoad == 100){
-                            ProgressBarElement.value = 100;
-                            clearTimeout(start);
-                            document.getElementById("LPI").innerHTML = "Finished!";
-                            window.open("main.html")
-                        }
-                    }
-
-                    var amountLoaded = 0;
-                    progressBarFunction(amountLoaded);
-                    
-                </script>
-
-            </div>
+        <body>
+            <script>
+                window.open("loader.html")
+            </script>
+            
         </body>
     </head>
 </html>
