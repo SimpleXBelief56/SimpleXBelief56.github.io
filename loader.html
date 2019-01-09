@@ -4,20 +4,32 @@
         <title>SimpleXLoader</title>
         <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
         <body class="loadingBody">
-            <script>
+            <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+            <!-- <script>
                 window.open("https://simplexbelief56.github.io/index.html")
-            </script>
+            </script> -->
             <link rel="stylesheet" type="text/css" href="main-design.css">            
             <div class="loadingWindow">
                 <h2 class="loadingTitle">SimpleXLoader</h2>
                 <p class="loadingProgressInfo" id="LPI"></p>
                 <progress class="ProgressBar" value="0" id="pr" max="100"></progress>
+                <button class="loadWebsiteServer" id="LaunchButton" onclick="launchWebsite()">Launch</button>
                 <script>
+                    var ButtonAlloc = document.getElementById("LaunchButton")
+                    // ButtonAlloc.style.visibility = 'hidden';
+                    // $(document).ready(function() {
+                    //     $(".loadWebsiteServer").fadeOut();
+                    //     // $(".loadWebsiteServer").css("visbility", "hidden");
+                        
+                    //     // window.open("main.html")
+                    // });
+                    console.log("Button is hidden!")
                     function progressBarFunction(amountLoad){
                         var ProgressBarElement = document.getElementById("pr");
                         ProgressBarElement.value = amountLoad;
+                        var LoadingSpeed = 50;
                         amountLoad++;
-                        var start = setTimeout("progressBarFunction("+amountLoad+")",100);
+                        var start = setTimeout("progressBarFunction("+amountLoad+")", LoadingSpeed);
 
                         if(amountLoad == 1){
                             document.getElementById("LPI").innerHTML = "Importing Files";
@@ -36,10 +48,12 @@
                                 document.getElementById("LPI").innerHTML = "iPhone Detected: Loading Prefernces";
                             } else if(/iPad/i.test(navigator.userAgent)){
                                 document.getElementById("LPI").innerHTML = "iPad Detected: Loading Preferences";
-                            } else if(/Android/i/test(navigator.userAgent)){
+                            } else if(/Android/i.test(navigator.userAgent)){
                                 document.getElementById("LPI").innerHTML = "Android Detected: Loading Preferences";
                             } else if(/Linux/i.test(navigator.userAgent)){
                                 document.getElementById("LPI").innerHTML = "Linux Detected: Loading Preferences";
+                            } else if(/Windows/i.test(navigator.userAgent)){
+                                document.getElementById("LPI").innerHTML = "Windows Detected: Loading Prefernces";                            
                             } else {
                                 document.getElementById("LPI").innerHTML = "Unknown Device Detected: Loading default Prefernces";
                             }
@@ -53,12 +67,22 @@
                             ProgressBarElement.value = 100;
                             clearTimeout(start);
                             document.getElementById("LPI").innerHTML = "Finished!";
-                            window.open("main.html")
-                        }
+                            // ButtonAlloc.style.visibility = 'visible';
+                            $(document).ready(function() {
+                                $(".loadWebsiteServer").fadeIn();
+                                // $(".loadWebsiteServer").css("visbility", "visible");
+                            
+                            // window.open("main.html")
+                        });
                     }
+                }
 
                     var amountLoaded = 0;
                     progressBarFunction(amountLoaded);
+
+                    function launchWebsite(){
+                        window.open("https://simplexbelief56.github.io/main.html")
+                    }
                     
                 </script>
 
