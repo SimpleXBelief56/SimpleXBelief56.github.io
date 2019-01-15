@@ -25,11 +25,17 @@
                 </script>
                 
                 <ul class="nav-bar">
-                    <li><a href="main.html">Home</a></li>
+                    <li><a onclick='devicePage()'>Home</a></li>
                     <li><a href="SimpleXWebkit.html">SimpleXWebkit</a></li>
                     <li><a href="device.html">Device Info</a></li>
                     <li><a href="about.html">About</a></li>
-                </ul>                
+                </ul>
+                <script>
+                    function devicePage(){
+                        window.open('device.html');
+                    }
+                </script>
+            
                 <center>
                     <head>
                         <link rel="stylesheet" href="animate.min.css">
