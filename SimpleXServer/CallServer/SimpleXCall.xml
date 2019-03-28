@@ -1,5 +1,3 @@
 <Response>
-    <Say voice="alice">
-        SimpleXServer: Someone has connected to your server, please check your message for more details.
-    </Say>
+    <Say>SimpleXServer: Someone has connected to your server, please check your message for more details.</Say>
 </Response>
