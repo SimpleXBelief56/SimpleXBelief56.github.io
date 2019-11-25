@@ -49,46 +49,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <script>
-            // Configuration for iOS Web Application
-            // Load Initial UI before processing Javascript Functions
-            function mainPageTab(){
-                var MainPageFile = "main.html"
-                window.open(MainPageFile, "_self")
-            }
-
-            function jailbreakTab(){
-                var JailbreakFile = "SimpleXWebkit.html"
-                window.open(JailbreakFile, "_self")
-            }
-
-            function deviceInfoTab(){
-                var deviceInfoFile = "device.html"
-                window.open(deviceInfoFile, "_self")
-            }
-
-            function aboutTab(){
-                var aboutSectionFile = "about.html"
-                window.open(aboutSectionFile, "_self")
-            }
-
-
-        </script>
-
-        <script>
-            function detectDevice(){
-                if(window.innerWidth < 800){
-                    if(/iPad/i.test(navigator.userAgent)){
-                        window.location('mobile.html')
-                    } else if(/iPhone/i.test(navigator.userAgent)){
-                        window.location('mobile.html')                        
-                    } else if(/Android/i.test(navigator.userAgent)){
-                        window.location('mobile.html')
-                    } 
-                }
-            }                
-            </script>
-                            
+        </section>                            
     </body>
 </html>
