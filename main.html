@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>SimpleXWebsite | Home</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="main-design.css">
+        <link rel="manifest" href ="manifest.json">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="main-functions.js"></script>
+    </head>
+    <body class="mainBody"> 
+        <div>
+            <ul class="nav-bar">
+                <p class="navTitle">SimpleXNav</p>
+                <li class="nav-Buttons" id="main"><a onclick="PageLeaveTransition()">Home</a></li>
+                <li class="nav-Buttons" id="webkit"><a onclick="PageLeaveTransition()">SimpleXWebkit</a></li>
+                <li class="nav-Buttons" id="device"><a onclick="PageLeaveTransition()">Device Info</a></li>
+                <li class="nav-Buttons" id="special"><a onclick="PageLeaveTransition()">SimpleXApplication</a></li>
+                <li class="nav-Buttons" id="about"><a onclick="PageLeaveTransition()">About</a></li>
+            </ul>                
+        </div>
+        <center>
+            <h2 class="mainTitle" id="mTitle">SimpleXWebsite</h2>
+        </center>
+        <div class="background-picture" id="bgPic">
+            <img class="backgroundPicture" src="mainBackground.jpg">
+        </div>
+        <img class="scroll-icon" src="scroll.svg">
+        <p class="scroll-down-text">Scroll Down</p>                
+        <!-- Javascript -> {IOS Configuration} -->
+        <section class="ios-pwa-showcase" id="ios-pwa">
+            <div class="main-panel" id="mainpan">
+                <div class="left-panel-main">
+                    <ul class="app-details">
+                        <li class="details-ComingSoon">Coming Soon!</li>
+                        <li class="details">Simple Design</li>
+                        <li class="details">Easy to Use</li>
+                        <li class="details">Progressive Web App</li>
+                        <li class="details">Compatible with all Devices</li>                        
+                    </ul>
+                </div>
+                <div class="right-panel-main">
+                    <div class="complete-showcase">
+                        <div class="iPhone">
+                            <img class="iPhone7Plus-svg" id="IP7" src="iPhone7Plus.svg">
+                        </div>
+                        <div class="homepage-landing-showcase">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            // Configuration for iOS Web Application
+            // Load Initial UI before processing Javascript Functions
+            function mainPageTab(){
+                var MainPageFile = "main.html"
+                window.open(MainPageFile, "_self")
+            }
+
+            function jailbreakTab(){
+                var JailbreakFile = "SimpleXWebkit.html"
+                window.open(JailbreakFile, "_self")
+            }
+
+            function deviceInfoTab(){
+                var deviceInfoFile = "device.html"
+                window.open(deviceInfoFile, "_self")
+            }
+
+            function aboutTab(){
+                var aboutSectionFile = "about.html"
+                window.open(aboutSectionFile, "_self")
+            }
+
+
+        </script>
+
+        <script>
+            function detectDevice(){
+                if(window.innerWidth < 800){
+                    if(/iPad/i.test(navigator.userAgent)){
+                        window.location('mobile.html')
+                    } else if(/iPhone/i.test(navigator.userAgent)){
+                        window.location('mobile.html')                        
+                    } else if(/Android/i.test(navigator.userAgent)){
+                        window.location('mobile.html')
+                    } 
+                }
+            }                
+            </script>
+                            
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>SimpleXWebsite | Device Info</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" type="text/css" href="main-design.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="main-functions.js"></script>
+        <script type="text/javascript" src="ua-parser.min.js"></script>
+    </head>
+    <body class="deviceBody">        
+        <ul class="nav-bar">
+            <p class="navTitle" id="navTitleID">SimpleXNav</p>
+            <li class="nav-Buttons" id="main"><a onclick="PageLeaveTransition()">Home</a></li>
+            <li class="nav-Buttons" id="webkit"><a onclick="PageLeaveTransition()">SimpleXWebkit</a></li>
+            <li class="nav-Buttons" id="device"><a onclick="PageLeaveTransition()">Device Info</a></li>
+            <li class="nav-Buttons" id="special"><a onclick="PageLeaveTransition()">SimpleXApplication</a></li>
+            <li class="nav-Buttons" id="about"><a onclick="PageLeaveTransition()">About</a></li>
+        </ul>
+        <center>
+            <div class="device-infobox">
+                <h2 class="deviceTitleBox">Device Information</h2>
+                <p class="deviceType" id="deviceInfo"></p>
+                <p class="kernel" id="kType"></p>
+                <p class="error" id="errorType"></p>
+                <p class="engine" id="engineType"></p>
+                <p class="platform" id="platformName"></p>
+                <p class="browserName" id="bName"></p>
+                <p class="cookiesEnabled" id="cEnabled"></p>
+                <p class="codeName" id="cName"></p>
+
+                <script>
+                    var parser = new UAParser();
+                    var result = parser.getResult();
+                    if(/iPhone/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: iPhone";
+                        document.getElementById("kType").innerHTML = "iOS Version: " + result.os.version;
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else if(/iPad/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: iPad";
+                        document.getElementById("kType").innerHTML = "iOS Version: " + result.os.version;
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else if(/Android/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: Android";
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("kType").innerHTML = "Android Version: " + result.os.version;
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else if(/Linux/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: Linux";
+                        document.getElementById("platformName").innerHTML = "System: " + navigator.platform;
+                        // document.getElementById("kType").innerHTML = "Linux Version: " + result.os.version;
+                        if(result.os.version == null){
+                            document.getElementById("kType").innerHTML = "Linux Version: Error (Undefined)";
+                        } else {
+                            document.getElementById("kType").innerHTML = "Linux Version: " + result.os.version;
+                        }
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else if(/Windows/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: Windows";
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else if(/Mac/i.test(navigator.userAgent)){
+                        document.getElementById("deviceInfo").innerHTML = "Device: Mac OS";
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("engineType").innerHTML = "Engine: " + result.engine.name;
+                        document.getElementById("bName").innerHTML = "Browser: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    } else {
+                        document.getElementById("deviceInfo").innerHTML = "Device: Unknown"
+                        document.getElementById("platformName").innerHTML = "System: " + navigator.platform;
+                        document.getElementById("bName").innerHTML = "Browser Name: " +  navigator.appName;
+                        document.getElementById("cEnabled").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+                        document.getElementById("cName").innerHTML = "Browser Type: " + navigator.appCodeName;
+                    }
+
+                </script>
+            </div>
+        </center>
+    </body>
+
+</html>
