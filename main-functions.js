@@ -168,67 +168,6 @@ if(window.location.pathname == "/SimpleXWebkit.html"){
     }
 }
 
-// if(window.location.pathname == "/loader1.html"){
-//     function progressBarFunction(amountLoad){
-//         var ProgressBarElement = document.getElementById("pr");
-//         ProgressBarElement.value = amountLoad;
-//         var LoadingSpeed = 50;
-//         amountLoad++;
-//         var start = setTimeout("progressBarFunction("+amountLoad+")", LoadingSpeed);
-
-//         if(amountLoad == 1){
-//             document.getElementById("LPI").innerHTML = "Importing Files";
-//         }
-
-//         if(amountLoad == 25){
-//             document.getElementById("LPI").innerHTML = "Loading Exploits";
-//         }
-
-//         if(amountLoad == 35){
-//             document.getElementById("LPI").innerHTML = "Getting Device Info";
-//         }
-
-//         if(amountLoad == 55){
-//             if(/iPhone/i.test(navigator.userAgent)){
-//                 document.getElementById("LPI").innerHTML = "iPhone Detected: Loading Prefernces";
-//             } else if(/iPad/i.test(navigator.userAgent)){
-//                 document.getElementById("LPI").innerHTML = "iPad Detected: Loading Preferences";
-//             } else if(/Android/i.test(navigator.userAgent)){
-//                 document.getElementById("LPI").innerHTML = "Android Detected: Loading Preferences";
-//             } else if(/Linux/i.test(navigator.userAgent)){
-//                 document.getElementById("LPI").innerHTML = "Linux Detected: Loading Preferences";
-//             } else if(/Windows/i.test(navigator.userAgent)){
-//                 document.getElementById("LPI").innerHTML = "Windows Detected: Loading Prefernces";                            
-//             } else {
-//                 document.getElementById("LPI").innerHTML = "Unknown Device Detected: Loading default Prefernces";
-//             }
-//         }
-
-//         if(amountLoad == 75){
-//             document.getElementById("LPI").innerHTML = "Optimizing Server";
-//         }
-
-//         if(amountLoad == 100){
-//             ProgressBarElement.value = 100;
-//             clearTimeout(start);
-//             document.getElementById("LPI").innerHTML = "Launch Server";
-//             // ButtonAlloc.style.visibility = 'visible';
-//             $(document).ready(function() {
-//                 $(".loadWebsiteServer").fadeIn();
-//                 // $(".loadWebsiteServer").css("visbility", "visible");
-            
-//             // window.open("main.html")
-//             });
-//         }
-//     }
-
-//     function launchWebsite(){
-//         window.open("main.html", "_self")
-//     }
-// }
-
-
-
 
 /////
 
