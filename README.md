@@ -1,4 +1,3 @@
-# SimpleXWebsite Made By SimpleXTeam
-
-Fully Supports PWA
-Supports Windows, Linux, MacOS
+# SimpleXWebsite
+**Made By SimpleXTeam**
+Compatible with Windows, MacOs, iOs Devices
