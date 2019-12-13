@@ -463,8 +463,8 @@ progress::-moz-progress-bar {
 
 .deviceBody{
     background-color: black;
-    /* background-position: left 50px; */
     background-size: 200px;
+    overflow-y: hidden;
 
 }
 
