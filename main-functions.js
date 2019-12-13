@@ -3,7 +3,7 @@
 // Built from the ground - up
 // Copyright 2019 SimpleXTeam
 
-
+// Delay next execution
 function Delay(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -120,7 +120,7 @@ if(window.location.pathname == "/about.html"){
                         $(".ceo-title").animate({
                             opacity: 0
                         }, 800).promise().done(function(){
-                            ConsoleLog("[+] Animation Complete", null)
+                            console.log("JQUERY Animation Complete")
                         })
                         $('html, body').animate({scrollTop: $('.nav-bar').offset().top}, 1600).promise().done(function(){
                             if($(".nav-bar").is(":visible")){
@@ -149,11 +149,14 @@ if(window.location.pathname == "/about.html"){
                     }
                 }
             }
+            // Call the Handler
             ScrollDownHandler()
         })
     }
 }
 
+// If the user is using a Desktop, please display the error window,
+// telling them, that Desktops are not supported. 
 if(window.location.pathname == "/SimpleXWebkit.html"){
     if(!/iPhone/i.test(navigator.userAgent)){
         $(document).ready(function(){
@@ -177,20 +180,20 @@ function DetectBrowser(){
 
     if(agentParserResult.engine.name == "EdgeHTML"){
         // Block from accessing website, Broswer is not supported
-        alert("We don't support Internet Explorer anymore")
-        ConsoleLog("Internet Explorer is not supported", true)
-        window.location.replace("https://google.com")
-    } else {
-        // Browser is supported
-        ConsoleLog("Broswer is supported", false)        
+        ConsoleLog("IE is not supported for now, support coming soon.", true)
+        alert("IE is not supported for now, support coming soon.");
+        window.location.href = "about:blank";
     }
 }
 
+// ConsoleLog Function
 function ConsoleLog(msg, err){
     if(err == true){
-        console.error("SimpleXLogging: " + msg)
+        console.error("SimpleXError: " + msg)
+        return 
     } else {
         console.log("SimpleXLogging: " + msg)
+        return
     }
 }
 
@@ -236,7 +239,6 @@ function PageLeaveTransition(){
             }, 200).promise().done(function() {
                 setTimeout(function(){
                     window.location.href = "/device.html"
-                    // WebPageDataPreparation("device.html")
                 }, 470)
             })
         })
@@ -295,13 +297,6 @@ function PageLeaveTransition(){
                 })
 
             })
-            // $(".aboutTitle").animate({
-            //     marginBottom: 950
-            // }, 340, "swing").promise().done(function(){
-            //     setTimeout(function(){
-            //         window.location.href = "/main.html"
-            //     }, 470)
-            // })
         })
         $("#webkit").on('click', function(){
             $(".aboutBody").css('overflow', 'hidden')
@@ -389,9 +384,7 @@ function PageLeaveTransition(){
                 marginTop: 0,
                 opacity: 0
             }, 300).promise().done(function(){
-                console.log("called")
                 window.location.href = "/main.html"
-                // WebPageDataPreparation("main.html")
             })
         })
         $("#webkit").on('click', function(){
@@ -399,9 +392,7 @@ function PageLeaveTransition(){
                 marginTop: 0,
                 opacity: 0
             }, 300).promise().done(function(){
-                console.log("called")
                 window.location.href = "/SimpleXWebkit.html"
-                // WebPageDataPreparation("main.html")
             })
         })
         $("#device").on('click', function(){
@@ -409,9 +400,7 @@ function PageLeaveTransition(){
                 marginTop: 0,
                 opacity: 0
             }, 300).promise().done(function(){
-                console.log("called")
                 window.location.href = "/device.html"
-                // WebPageDataPreparation("main.html")
             })
         })
         $("#special").on('click', function(){
@@ -419,9 +408,7 @@ function PageLeaveTransition(){
                 marginTop: 0,
                 opacity: 0
             }, 300).promise().done(function(){
-                console.log("called")
                 window.location.href = "/simplexapplication.html"
-                // WebPageDataPreparation("main.html")
             })
         })
         $("#about").on('click', function(){
@@ -429,9 +416,7 @@ function PageLeaveTransition(){
                 marginTop: 0,
                 opacity: 0
             }, 300).promise().done(function(){
-                console.log("called")
                 window.location.href = "/about.html"
-                // WebPageDataPreparation("main.html")
             })
         })
     }
@@ -469,7 +454,6 @@ function PageLeaveTransition(){
                 marginLeft: 90,
                 opacity: 0
             }, 300).promise().done(function(){
-                // console.log("called")
                 setTimeout(function(){
                     window.location.href = "/SimpleXWebkit.html"
                 }, 470)
@@ -488,7 +472,6 @@ function PageLeaveTransition(){
                 marginLeft: 90,
                 opacity: 0
             }, 300).promise().done(function(){
-                // console.log("called")
                 setTimeout(function(){
                     window.location.href = "/device.html"
                 }, 470)
@@ -507,8 +490,8 @@ function PageLeaveTransition(){
                 marginLeft: 90,
                 opacity: 0
             }, 300).promise().done(function(){
-                // console.log("called")
-                console.log("Current Page")
+                // Avoid Listener Hanging, when clicking on the current path
+                return;
             })
         })
         $("#about").on('click', function(){
@@ -601,40 +584,8 @@ function PageLeaveTransition(){
     }
 }
 
-function WebPageDataPreparation(requestedPage){
-    // Function Allocates requested page data, and holds it
-    // in the back, until its displayed in the screen, for
-    // smoother transitions between pages.
-
-    var page = requestedPage;
-
-    // load data
-    window.history.pushState(null, null, page)
-
-    $.ajax({
-        url: page,
-        success: function(pageData){
-            // console.log(pageData)
-            // Load all the data
-
-            $("body").html(pageData)
-            
-            // $("body").html(pageData, function(){
-
-            // })
-        }
-    })
-}
-
 function Delay(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function LoadScript(){
-    // load initial scripts
-    $.getScript("main-functions.js", function(data, status, jq){
-        console.log(data, status, jq)
-    })
 }
 
 async function SwtichImage(){
@@ -720,7 +671,6 @@ async function progressBarFunction(amountLoad){
         await Delay(1400)
         $(".LoadingStatus").fadeOut('slow')
         await Delay(1200)
-        SimpleXCookies("loadedFiles=true; path=/;")
 
         window.location.href = "/main.html"
         
