@@ -8,6 +8,7 @@ function Delay(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Scroll Animation | ChromeOS Not Working Fix Coming Soon!
 if(window.location.pathname == "/main.html"){
     window.onload = function(){
         window.addEventListener('wheel', function(e){
